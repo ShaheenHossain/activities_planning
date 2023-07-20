@@ -1,0 +1,104 @@
+<odoo>
+    <data>
+        <!-- explicit list view definition -->
+        <record id="activities_palanning_res_partner_form" model="ir.ui.view">
+            <field name="name">activities.palanning.res.partner.form</field>
+            <field name="priority" eval="1"/>
+            <field name="model">res.partner</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <field name="image_1920" widget="image" class="oe_avatar"
+                               options="{&quot;preview_image&quot;: &quot;avatar_128&quot;}"/>
+                        <div class="row" style="text-align:center;">Activities Planning</div>
+                        <group string="Information">
+                            <group>
+                                <field name="name"/>
+                                <field name="agent_name"/>
+                                <field name="legend"/>
+                            </group>
+                            <group>
+                                <field name="activity_date"/>
+                            </group>
+                            <group>
+                                <field name="start_time" widget="float_time"/>
+                                <field name="end_time" widget="float_time"/>
+                            </group>
+
+                        </group>
+
+
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+       <record id="activities_palanning_res_partner_list" model="ir.ui.view">
+            <field name="name">activities.palanning.res.partner.list</field>
+            <field name="priority" eval="1"/>
+            <field name="model">res.partner</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="agent_name"/>
+                    <field name="legend"/>
+                    <field name="activity_date"/>
+                    <field name="start_time" widget="float_time"/>
+                    <field name="end_time" widget="float_time"/>
+
+                </tree>
+            </field>
+        </record>
+
+
+
+
+        <record id="action_activities_agent_action" model="ir.actions.act_window">
+        <field name="name">Agent</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">res.partner</field>
+        <field name="view_mode">tree,form</field>
+        <field name="views">[('activities_palanning_res_partner_list', ‘tree’), ('activities_palanning_res_partner_form', ‘form’)]</field>
+<!--
+        <field name="domain">[ ('contact_type', '=', 'Agent')]</field>
+        <field name="context">{'default_contact_type': 2}</field>
+-->
+         </record>
+
+
+
+    <record id="action_contacts" model="ir.actions.act_window">
+            <field name="name">Persons</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">res.partner</field>
+            <field name="view_mode">kanban,tree,form,activity</field>
+            <field name="search_view_id" ref="base.view_res_partner_filter"/>
+            <field name="context">{'default_is_company': True}</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    Create a Contact in your address book
+                </p>
+                <p>
+                    Eagle IT Servises helps you track all activities related to your contacts.
+                </p>
+            </field>
+        </record>
+
+    <menuitem id="activities_planning_menu_root"
+              name="Activities Planning"
+              web_icon="activities_planning,static/description/icon.png"/>
+
+    <menuitem id="activities_planning_menu_main"
+              name="Activities Planning"
+              parent="activities_planning_menu_root"
+              sequence="0"
+              groups="base.group_system"/>
+
+    <menuitem id="activities_planning_sub_menu"
+              name="Agent"
+              parent="activities_planning_menu_main"
+              sequence="0"
+              action="action_activities_agent_action"
+              groups="base.group_system"/>
+    </data>
+</odoo>
