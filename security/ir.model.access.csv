@@ -1,4 +1,4 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access.agent.activities,access_agent_activities,model_agent_activities,base.group_user,1,1,1,1
+access.activities.agent,access_activities_agent,model_activities_agent,base.group_user,1,1,1,1
 access.activities.planning,access_activities_planning,model_activities_planning,base.group_user,1,1,1,1
-access.legend.activities,access_legend_activities,model_legend_activities,base.group_user,1,1,1,1
+access.activities.legendactivity,access_activities_legendactivity,model_activities_legendactivity,base.group_user,1,1,1,1

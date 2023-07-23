@@ -2,7 +2,7 @@
     <data>
         <!-- explicit list view definition -->
         <record id="activities_palanning_res_partner_form" model="ir.ui.view">
-            <field name="name">activities.palanning.res.partner.form</field>
+            <field name="name">activities.agent.res.partner.form</field>
             <field name="priority" eval="1"/>
             <field name="model">res.partner</field>
             <field name="arch" type="xml">
@@ -14,27 +14,26 @@
                         <group string="Information">
                             <group>
                                 <field name="name"/>
-                                <field name="agent_name"/>
-                                <field name="legend"/>
                             </group>
-                            <group>
-                                <field name="activity_date"/>
-                            </group>
-                            <group>
-                                <field name="start_time" widget="float_time"/>
-                                <field name="end_time" widget="float_time"/>
-                            </group>
-
                         </group>
-
-
+                            <group string="Activity">
+                                <field name="activities_ids" nolabel="1" colspan="2">
+                                    <tree editable="bottom">
+                                        <field name="agent_name"/>
+                                        <field name="legend"/>
+                                        <field name="activity_date"/>
+                                        <field name="start_time" widget="float_time"/>
+                                        <field name="end_time" widget="float_time"/>
+                                    </tree>
+                                </field>
+                            </group>
                     </sheet>
                 </form>
             </field>
         </record>
 
        <record id="activities_palanning_res_partner_list" model="ir.ui.view">
-            <field name="name">activities.palanning.res.partner.list</field>
+            <field name="name">activities.agent.res.partner.list</field>
             <field name="priority" eval="1"/>
             <field name="model">res.partner</field>
             <field name="arch" type="xml">
@@ -45,7 +44,6 @@
                     <field name="activity_date"/>
                     <field name="start_time" widget="float_time"/>
                     <field name="end_time" widget="float_time"/>
-
                 </tree>
             </field>
         </record>
